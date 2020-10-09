@@ -92,9 +92,9 @@ Let's modify the table
 }
 ```
 
-Now run terraform apply. Terraform will recreate the database because it is not possbile to add a `range key` to existing database. Database has to be created with a range key from the very beginning.
+Now run terraform apply. Terraform will recreate the table because it is not possbile to add a `range key` to existing table. Table has to be created with a range key from the very beginning.
 
-Now when we have the database with a range key defined lets add the data once again using set of above curls and get again retrieve the data. Now all measurements should be present in the database.
+Now when we have the table with a range key defined lets add the data once again using set of above curls and get again retrieve the data. Now all measurements should be present in the output.
 
 With a `composite key` we can easily query, for example, all measurements from `station1`:
 
@@ -102,4 +102,4 @@ With a `composite key` we can easily query, for example, all measurements from `
 aws --profile training dynamodb query --table-name weather-table --key-condition-expression "StationId = :station" --expression-attribute-values '{":station":{"S":"station1"}}'
 ```
 
-Dynamodb will also automatically sort the results using range key.
+DynamoDB will also automatically sort the results using range key.
